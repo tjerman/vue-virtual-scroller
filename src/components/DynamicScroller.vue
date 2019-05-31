@@ -173,12 +173,16 @@ export default {
     scrollToBottom () {
       if (this.$_scrollingToBottom) return
       this.$_scrollingToBottom = true
-      const el = this.$el
       // Item is inserted to the DOM
+      let i = 0
+
       this.$nextTick(() => {
         // Item sizes are computed
         const cb = () => {
-          el.scrollTop = el.scrollHeight
+          for (i; i < this.itemsWithSize.length; i++) {
+            if (!this.itemsWithSize[i].size) break
+          }
+          this.scrollToItem(i)
           if (this.$_undefinedSizes === 0) {
             this.$_scrollingToBottom = false
           } else {
