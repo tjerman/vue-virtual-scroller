@@ -109,6 +109,10 @@ export default {
   },
 
   watch: {
+    itemsWithSize () {
+      this.$emit('items:recalced')
+    },
+
     items () {
       this.forceUpdate(false)
     },
